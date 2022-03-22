@@ -134,6 +134,15 @@ export default {
           } catch (e) {
             return true
           }
+        }).sort((a,b) => {
+          let a_start_match = a.text.startsWith(this.searchText);
+          let b_start_match = b.text.startsWith(this.searchText);
+
+          if(a_start_match == b_start_match){
+            return 0;
+          }
+
+          return a_start_match ? -1 : 1;
         })
       } else {
         return this.options
