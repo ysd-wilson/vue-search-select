@@ -135,8 +135,8 @@ export default {
             return true
           }
         }).sort((a,b) => {
-          let a_start_match = a.text.startsWith(this.searchText);
-          let b_start_match = b.text.startsWith(this.searchText);
+          let a_start_match = a.text.toLowerCase().startsWith(this.searchText.toLowerCase());
+          let b_start_match = b.text.toLowerCase().startsWith(this.searchText.toLowerCase());
 
           if(a_start_match == b_start_match){
             return 0;
