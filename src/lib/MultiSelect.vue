@@ -145,7 +145,7 @@ export default {
     },
     nonSelectOptions () {
       return this.options.filter(el => {
-        return this.selectedOptions.findIndex(o => o.value === el.value) === -1
+        return this.mySelectedOptions.findIndex(o => o.value === el.value) === -1
       })
     },
     filteredOptions () {
@@ -168,8 +168,8 @@ export default {
   },
   methods: {
     deleteTextOrLastItem () {
-      if (!this.searchText && this.selectedOptions.length > 0) {
-        this.deleteItem(this.selectedOptions[this.selectedOptions.length - 1])
+      if (!this.searchText && this.mySelectedOptions.length > 0) {
+        this.deleteItem(this.mySelectedOptions[this.mySelectedOptions.length - 1])
       }
     },
     openOptions () {
@@ -204,7 +204,7 @@ export default {
       common.mousedownItem(this)
     },
     selectItem (option) {
-      const tempSelectedOptions = this.selectedOptions.concat(option)
+      const tempSelectedOptions = this.mySelectedOptions.concat(option)
       const selectedOptions = tempSelectedOptions.filter((el, idx) => {
         return tempSelectedOptions.indexOf(el) === idx
       })
@@ -213,7 +213,7 @@ export default {
       this.$emit('select', selectedOptions, option, 'insert')
     },
     deleteItem (option) {
-      const selectedOptions = this.selectedOptions.filter(o => {
+      const selectedOptions = this.mySelectedOptions.filter(o => {
         return o.value !== option.value
       })
       this.$emit('select', selectedOptions, option, 'delete')
