@@ -7,15 +7,17 @@
   >
     <i class="dropdown icon"></i>
     <template v-if="!hideSelectedOptions">
-      <a
-        v-for="(option, idx) in selectedOptions"
-        :key="idx"
-        class="ui label transition visible"
-        style="display: inline-block !important;"
-        :data-vss-custom-attr="customAttr(option)"
-      >
-        {{option.text}}<i class="delete icon" @click="deleteItem(option)"></i>
-      </a>
+      <draggable v-model="mySelectedOptions" draggable=".selected-item">
+        <a
+          v-for="(option, idx) in mySelectedOptions"
+          :key="idx"
+          class="ui label transition visible selected-item"
+          style="display: inline-block !important;"
+          :data-vss-custom-attr="customAttr(option)"
+        >
+          {{option.text}}<i class="delete icon" @click="deleteItem(option)"></i>
+        </a>
+      </draggable>
     </template>
     <input
       class="search"
@@ -99,6 +101,14 @@ export default {
     }
   },
   computed: {
+    mySelectedOptions: {
+      set: function (value) {
+        this.$emit('input', value)
+      },
+      get: function () {
+        return this.selectedOptions
+      }
+    },
     inputText () {
       if (this.searchText) {
         return ''

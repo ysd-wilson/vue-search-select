@@ -46,5 +46,8 @@
     "sass-loader": "^7.1.0",
     "semantic-ui-css": "^2.4.1",
     "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "vuedraggable": "^2.24.3"
   }
 }
