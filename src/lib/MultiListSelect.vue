@@ -78,7 +78,7 @@ export default {
           return e !== undefined;
         });
       
-        const item = this.list.find(e => {
+        const item = option === null ? null : this.list.find(e => {
           return e[this.optionValue] === option.value
         })
         this.$emit('select', items, item)
