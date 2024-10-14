@@ -65,19 +65,19 @@ export default {
       }
     },
     onSelect (options, option) {
-      if(option === null){
-        this.$emit('select', options, null);
-        return;
-      }
 
-      if (Object.keys(option).length === 0 && option.constructor === Object) {
+      if (option !== null && Object.keys(option).length === 0 && option.constructor === Object) {
         this.$emit('select', options, option)
       } else {
-        const items = this.list.filter((e, i) => {
-          return options.find((o, i) => {
-            return e[this.optionValue] === o.value
-          })
-        })
+
+        const items = options.map(function (o) {
+          return this.list.find(function (e) {
+            return e[this.optionValue] === o.value;
+          }, this);
+        }, this).filter(function (e) {
+          return e !== undefined;
+        });
+      
         const item = this.list.find(e => {
           return e[this.optionValue] === option.value
         })

@@ -7,7 +7,7 @@
   >
     <i class="dropdown icon"></i>
     <template v-if="!hideSelectedOptions">
-      <draggable v-model="mySelectedOptions" draggable=".selected-item">
+      <draggable v-model="mySelectedOptions" draggable=".selected-item" class="draggable">
         <a
           v-for="(option, idx) in mySelectedOptions"
           :key="idx"
