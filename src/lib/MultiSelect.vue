@@ -70,6 +70,7 @@
 <script>
 import common from './common'
 import { baseMixin, commonMixin, optionAwareMixin } from './mixins'
+import draggable from 'vuedraggable';
 
 export default {
   name: 'MultiSelect',
@@ -86,6 +87,9 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  components: {
+      draggable,
   },
   data () {
     return {
