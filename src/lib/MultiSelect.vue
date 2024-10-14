@@ -107,7 +107,7 @@ export default {
   computed: {
     mySelectedOptions: {
       set: function (value) {
-        this.$emit('input', value)
+        this.$emit('select', value, null, 'reorder')
       },
       get: function () {
         return this.selectedOptions
