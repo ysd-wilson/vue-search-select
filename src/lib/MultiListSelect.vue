@@ -65,6 +65,10 @@ export default {
       }
     },
     onSelect (options, option) {
+      if(option === null){
+        this.$emit('select', options, null);
+      }
+
       if (Object.keys(option).length === 0 && option.constructor === Object) {
         this.$emit('select', options, option)
       } else {
